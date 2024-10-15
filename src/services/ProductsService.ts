@@ -2,9 +2,9 @@ import fakeStoreApi from "@/api/fakeStoreApi";
 import { Category, Product } from "@/interface";
 
 class ProductsService {
-  static async getProducts(page: number): Promise<Product[] | boolean> {
+  static async getProducts(page: number): Promise<Product[]> {
     try {
-      const numberOfItems = page * 15;
+      const numberOfItems = page * 10;
 
       const { data } = await fakeStoreApi.get<Product[]>(
         `?limit=${numberOfItems}`
@@ -13,16 +13,16 @@ class ProductsService {
       return data;
     } catch (error) {
       console.error(error);
-      return false;
+      return [];
     }
   }
 
   static async getProductsByCategory(
     page: number,
     category: Category
-  ): Promise<Product[] | boolean> {
+  ): Promise<Product[]> {
     try {
-      const numberOfItems = page * 15;
+      const numberOfItems = page * 10;
 
       const { data } = await fakeStoreApi.get<Product[]>(
         `/category/${category}?limit=${numberOfItems}`
@@ -31,18 +31,31 @@ class ProductsService {
       return data;
     } catch (error) {
       console.error(error);
-      return false;
+      return [];
     }
   }
 
-  static async getCategories():Promise<Category[] | boolean>{
+  static async getCategories():Promise<Category[]>{
     try {
       const { data } = await fakeStoreApi.get<Category[]>("/categories");
 
       return data;
     } catch (error) {
       console.error(error);
-      return false;
+      return [];
+    }
+  }
+
+  static async getProduct(id:number):Promise<Product>{
+    try{
+
+      const { data }=await fakeStoreApi.get<Product>(`/${id}`);
+
+      return data;
+
+    }catch(error){
+      console.error(error);
+      return {} as Product;
     }
   }
 

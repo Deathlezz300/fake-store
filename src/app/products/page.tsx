@@ -1,4 +1,4 @@
-import { ProductsList } from "@/components/Products";
+import { ProductsView } from "@/components/Products";
 import ProductsService from "@/services/ProductsService";
 import { Metadata } from "next";
 
@@ -19,7 +19,7 @@ export default async function ProductsPage(){
 
     return (
         <section className="w-full">
-            <ProductsList products={products} categories={categories}/>
+            <ProductsView products={products} categories={categories}/>
         </section>
     )
 }
