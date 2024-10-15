@@ -2,15 +2,16 @@ import { Category, Product } from "@/interface";
 import ProductsService from "@/services/ProductsService";
 import { useEffect, useRef, useState } from "react";
 import { Filters } from "../interface/Filters";
+import { categories } from "@/constants";
 
-export const useProductList = (products: Product[]) => {
+export const useProductList = (products: Product[], selectedCategory:Category) => {
   const [productsList, setProducts] = useState<Product[]>([]);
   const [originalProductList, setOriginalProductList] = useState<Product[]>([]);
   const [loading, setLoading] = useState(false);
   const [firstLoad, setFirstLoad] = useState(false);
   const [hideButton, setHideButton] = useState(false);
   const [filters, SetFilters] = useState<Filters>({
-    category: "All",
+    category: categories.includes(selectedCategory) ? selectedCategory : "All",
     title: "",
     priceLevel: "default",
     alphabetic: "default",

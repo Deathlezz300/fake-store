@@ -1,18 +1,17 @@
 "use client";
 
-import { Category, Filters, Product } from "@/interface";
-import React, { useEffect, useRef, useState } from "react";
+import { Category,  Product } from "@/interface";
 import { ProductsList } from "./ProductsList";
-import ProductsService from "@/services/ProductsService";
 import { FiltersComponent } from "../Filters";
 import { useProductList } from "@/hooks/useProductList";
 
 interface props {
   products: Product[];
   categories: Category[];
+  selectedCategory: Category | null;
 }
 
-export const ProductsView = ({ products, categories }: props) => {
+export const ProductsView = ({ products, categories , selectedCategory }: props) => {
   const {
     filters,
     handleChangeFilter,
@@ -20,7 +19,7 @@ export const ProductsView = ({ products, categories }: props) => {
     hideButton,
     loading,
     loadMore,
-  } = useProductList(products);
+  } = useProductList(products,selectedCategory as Category);
 
   return (
     <div className="w-full flex items-center flex-col gap-3 py-6">
