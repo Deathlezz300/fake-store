@@ -19,7 +19,7 @@ export const useProductList = (products: Product[], selectedCategory:Category) =
 
   const [page, setPage] = useState(1);
 
-  const timeoutRef = useRef<any>(null);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     setProducts(products);

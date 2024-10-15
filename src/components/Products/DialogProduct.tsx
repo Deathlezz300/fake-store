@@ -1,10 +1,8 @@
 import React from "react";
 import {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -13,7 +11,6 @@ import { Product } from "@/interface";
 import { FaStar } from "react-icons/fa";
 
 export const DialogProduct = ({
-  id,
   title,
   image,
   rating,

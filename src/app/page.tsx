@@ -16,17 +16,13 @@ export default function Home() {
             See our products
           </Link>
         </div>
-        {/* <img
-          className="bg-no-repeat object-contain max-h-96"
-          alt="home_image"
-          src={Home}
-        /> */}
       </div>
       <div className="w-full bg-slate-100 flex flex-col py-10 gap-3 justify-center items-center">
         <h2 className="text-xl font-bold text-black" >Our categories</h2>
         <div className="flex gap-3 flex-wrap">
         {categories.map((category) => (
           <Link
+            key={category}
             href={`/products?category=${category}`}
             className="capitalize p-6 rounded-lg text-white text-sm bg-black hover:scale-105 cursor-pointer"
           >
